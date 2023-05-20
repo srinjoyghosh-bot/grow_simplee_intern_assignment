@@ -8,12 +8,14 @@ class DriverFormField extends StatefulWidget {
       required this.label,
       required this.textType,
       required this.validator,
-      required this.onSave})
+      required this.onSave,
+      this.initialText})
       : super(key: key);
   final String label;
   final TextInputType textType;
   final String? Function(String? val) validator;
   final void Function(String? val) onSave;
+  final String? initialText;
 
   @override
   State<DriverFormField> createState() => _DriverFormFieldState();
@@ -52,6 +54,7 @@ class _DriverFormFieldState extends State<DriverFormField> {
           keyboardType: widget.textType,
           validator: widget.validator,
           onSaved: widget.onSave,
+          initialValue: widget.initialText,
         ),
       ],
     );

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:grow_simplee_intern_assignment/size_config.dart';
+import 'package:grow_simplee_intern_assignment/view%20model/add_rider_viewmodel.dart';
+import 'package:grow_simplee_intern_assignment/view/upload_documents_view.dart';
 import 'package:grow_simplee_intern_assignment/widgets/multi_select_field.dart';
 import 'package:grow_simplee_intern_assignment/widgets/rectangular_fab.dart';
+import 'package:provider/provider.dart';
 
 import '../styles.dart';
 import '../widgets/driver_form_field.dart';
@@ -15,6 +18,7 @@ class AddRiderView extends StatefulWidget {
 }
 
 class _AddRiderViewState extends State<AddRiderView> {
+  late AddRiderViewModel model;
   final _key = GlobalKey<FormState>();
   String name = '',
       number = '',
@@ -33,18 +37,20 @@ class _AddRiderViewState extends State<AddRiderView> {
 
   void submit() async {
     final isValid = _key.currentState?.validate();
-    if (isValid == null || !isValid) {
+    if (isValid == null || !isValid || selected.isEmpty) {
+      if (selected.isEmpty) {
+        model.setWarningStatus = true;
+      } else {
+        model.setWarningStatus = false;
+      }
       return;
     }
+
     _key.currentState?.save();
-    // final result = await _model.createTransaction(
-    //     title, amount, selectedType, selectedCategory);
-    // if (result) {
-    //   Navigator.of(context).pushReplacementNamed(MainScreen.id);
-    //   showSuccessToast('Transaction added!', context);
-    // } else {
-    //   showErrorToast(_model.errorMessage, context);
-    // }
+    model.setWarningStatus = false;
+    model.onSave(name, number, address, pincode, bankAccount, ifsc, localities);
+    // navigate
+    Navigator.of(context).pushNamed(UploadDocumentsView.id);
   }
 
   String convertListToString(List<String> list) {
@@ -56,7 +62,13 @@ class _AddRiderViewState extends State<AddRiderView> {
   }
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    model = Provider.of<AddRiderViewModel>(context);
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -86,6 +98,7 @@ class _AddRiderViewState extends State<AddRiderView> {
                       onSave: (value) {
                         name = value!;
                       },
+                      initialText: name,
                     ),
                     DriverFormField(
                       label: 'Phone Number',
@@ -100,6 +113,7 @@ class _AddRiderViewState extends State<AddRiderView> {
                       onSave: (value) {
                         number = value!;
                       },
+                      initialText: number,
                     ),
                     SizedBox(height: SizeConfig.blockSizeVertical * 2),
                     Text('Localities', style: bodyTextStyle1),
@@ -109,7 +123,7 @@ class _AddRiderViewState extends State<AddRiderView> {
                         List<String>? result = await showDialog(
                             context: context,
                             builder: (_) => MultiSelect(
-                                  items: localities,
+                                  items: model.allLocalities,
                                   selected: selected,
                                 ));
                         if (result != null) {
@@ -122,7 +136,10 @@ class _AddRiderViewState extends State<AddRiderView> {
                         decoration: BoxDecoration(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(2)),
-                            border: Border.all(color: Colors.grey)),
+                            border: Border.all(
+                                color: model.showWarning
+                                    ? Colors.red
+                                    : Colors.grey)),
                         padding: EdgeInsets.symmetric(
                             horizontal: SizeConfig.blockSizeHorizontal * 2,
                             vertical: SizeConfig.blockSizeVertical * 0.1),
@@ -158,6 +175,7 @@ class _AddRiderViewState extends State<AddRiderView> {
                       onSave: (value) {
                         address = value!;
                       },
+                      initialText: address,
                     ),
                     DriverFormField(
                       label: 'Current Pincode',
@@ -172,6 +190,7 @@ class _AddRiderViewState extends State<AddRiderView> {
                       onSave: (value) {
                         pincode = value!;
                       },
+                      initialText: pincode,
                     ),
                     DriverFormField(
                       label: 'Bank Account Number',
@@ -186,6 +205,7 @@ class _AddRiderViewState extends State<AddRiderView> {
                       onSave: (value) {
                         bankAccount = value!;
                       },
+                      initialText: bankAccount,
                     ),
                     DriverFormField(
                       label: 'IFSC Number',
@@ -200,6 +220,7 @@ class _AddRiderViewState extends State<AddRiderView> {
                       onSave: (value) {
                         ifsc = value!;
                       },
+                      initialText: ifsc,
                     ),
                     SizedBox(height: SizeConfig.blockSizeVertical * 10)
                   ],

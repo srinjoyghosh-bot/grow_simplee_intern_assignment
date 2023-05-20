@@ -5,6 +5,9 @@ TextStyle buttonTextStyle = TextStyle(
       fontSize: SizeConfig.blockSizeVertical * 2.5,
       fontWeight: FontWeight.bold,
     ),
+    buttonTextStyle2 = TextStyle(
+      fontSize: SizeConfig.blockSizeVertical * 2.2,
+    ),
     headerTextStyle1 = TextStyle(
       fontSize: SizeConfig.blockSizeVertical * 2.5,
     ),
