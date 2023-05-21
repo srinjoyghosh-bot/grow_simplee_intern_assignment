@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grow_simplee_intern_assignment/constants/constants.dart';
+import 'package:grow_simplee_intern_assignment/constants.dart';
 import 'package:grow_simplee_intern_assignment/size_config.dart';
 import 'package:grow_simplee_intern_assignment/styles.dart';
 import 'package:grow_simplee_intern_assignment/utils/snackbars.dart';

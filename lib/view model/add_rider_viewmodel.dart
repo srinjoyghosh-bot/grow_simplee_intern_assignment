@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import 'package:grow_simplee_intern_assignment/constants/constants.dart';
+import 'package:flutter/material.dart';
+import 'package:grow_simplee_intern_assignment/constants.dart';
 import 'package:grow_simplee_intern_assignment/model/rider.dart';
-import 'package:grow_simplee_intern_assignment/view%20model/base_viewmodel.dart';
 import 'package:uuid/uuid.dart';
 
-class AddRiderViewModel extends BaseViewModel {
+class AddRiderViewModel extends ChangeNotifier {
   String? _name, _phone, _address, _pincode, _bank, _ifsc;
   List<String>? _localities;
   Map<String, File?> _imageMap = {

@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:grow_simplee_intern_assignment/constants/constants.dart';
+import 'package:grow_simplee_intern_assignment/constants.dart';
 import 'package:grow_simplee_intern_assignment/model/rider.dart';
 import 'package:grow_simplee_intern_assignment/styles.dart';
 import 'package:grow_simplee_intern_assignment/utils/convert.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grow_simplee_intern_assignment/constants/constants.dart';
+import 'package:grow_simplee_intern_assignment/constants.dart';
 
 class MultiSelect extends StatefulWidget {
   final List<String> items;

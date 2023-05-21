@@ -9,7 +9,7 @@ import 'package:grow_simplee_intern_assignment/view%20model/add_rider_viewmodel.
 import 'package:grow_simplee_intern_assignment/view/image_view.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../constants/constants.dart';
+import '../constants.dart';
 
 class DocumentTile extends StatefulWidget {
   const DocumentTile({Key? key, required this.title, required this.model})

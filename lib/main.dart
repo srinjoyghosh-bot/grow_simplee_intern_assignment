@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grow_simplee_intern_assignment/constants/constants.dart';
+import 'package:grow_simplee_intern_assignment/constants.dart';
 import 'package:grow_simplee_intern_assignment/router.dart';
 import 'package:grow_simplee_intern_assignment/view%20model/add_rider_viewmodel.dart';
 import 'package:grow_simplee_intern_assignment/view%20model/home_viewmodel.dart';

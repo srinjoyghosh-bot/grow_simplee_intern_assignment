@@ -7,7 +7,7 @@ import 'package:grow_simplee_intern_assignment/widgets/rectangular_fab.dart';
 import 'package:grow_simplee_intern_assignment/widgets/rider_tile.dart';
 import 'package:provider/provider.dart';
 
-import '../constants/constants.dart';
+import '../constants.dart';
 import '../utils/snackbars.dart';
 
 class HomeView extends StatefulWidget {

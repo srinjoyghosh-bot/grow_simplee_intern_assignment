@@ -3,19 +3,25 @@ import 'package:grow_simplee_intern_assignment/size_config.dart';
 import 'package:grow_simplee_intern_assignment/styles.dart';
 
 class DriverFormField extends StatefulWidget {
-  const DriverFormField(
-      {Key? key,
-      required this.label,
-      required this.textType,
-      required this.validator,
-      required this.onSave,
-      this.initialText})
-      : super(key: key);
+  const DriverFormField({
+    Key? key,
+    required this.label,
+    required this.textType,
+    required this.validator,
+    required this.onSave,
+    this.initialText,
+    required this.focusNode,
+    required this.onSubmit,
+    this.textInputAction = TextInputAction.next,
+  }) : super(key: key);
   final String label;
   final TextInputType textType;
   final String? Function(String? val) validator;
   final void Function(String? val) onSave;
   final String? initialText;
+  final FocusNode focusNode;
+  final Function(String?) onSubmit;
+  final TextInputAction textInputAction;
 
   @override
   State<DriverFormField> createState() => _DriverFormFieldState();
@@ -55,6 +61,9 @@ class _DriverFormFieldState extends State<DriverFormField> {
           validator: widget.validator,
           onSaved: widget.onSave,
           initialValue: widget.initialText,
+          focusNode: widget.focusNode,
+          onFieldSubmitted: widget.onSubmit,
+          textInputAction: widget.textInputAction,
         ),
       ],
     );

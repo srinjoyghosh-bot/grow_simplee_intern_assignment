@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:grow_simplee_intern_assignment/styles.dart';
 
-import '../constants/constants.dart';
+import '../constants.dart';
 
 class ImageView extends StatefulWidget {
   const ImageView({Key? key, required this.image}) : super(key: key);

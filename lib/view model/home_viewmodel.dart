@@ -1,8 +1,8 @@
-import 'package:grow_simplee_intern_assignment/view%20model/base_viewmodel.dart';
+import 'package:flutter/material.dart';
 
 import '../model/rider.dart';
 
-class HomeViewModel extends BaseViewModel {
+class HomeViewModel extends ChangeNotifier {
   final List<Rider> _riders = [];
 
   List<Rider> get riders => [..._riders];

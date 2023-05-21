@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grow_simplee_intern_assignment/constants/constants.dart';
+import 'package:grow_simplee_intern_assignment/constants.dart';
 import 'package:grow_simplee_intern_assignment/size_config.dart';
 import 'package:grow_simplee_intern_assignment/view%20model/add_rider_viewmodel.dart';
 import 'package:grow_simplee_intern_assignment/view/upload_documents_view.dart';
@@ -21,6 +21,18 @@ class AddRiderView extends StatefulWidget {
 
 class _AddRiderViewState extends State<AddRiderView> {
   late AddRiderViewModel model;
+  FocusNode _nameFocus = FocusNode();
+  FocusNode _phoneFocus = FocusNode();
+  FocusNode _addressFocus = FocusNode();
+  FocusNode _pincodeFocus = FocusNode();
+  FocusNode _bankFocus = FocusNode();
+  FocusNode _ifscFocus = FocusNode();
+
+  void _fieldFocusChange(FocusNode currentFocus, FocusNode nextFocus) {
+    currentFocus.unfocus();
+    FocusScope.of(context).requestFocus(nextFocus);
+  }
+
   final _key = GlobalKey<FormState>();
   String name = '',
       number = '',
@@ -87,6 +99,10 @@ class _AddRiderViewState extends State<AddRiderView> {
                         name = value!;
                       },
                       initialText: name,
+                      focusNode: _nameFocus,
+                      onSubmit: (term) {
+                        _fieldFocusChange(_nameFocus, _phoneFocus);
+                      },
                     ),
                     DriverFormField(
                       label: Constants.phone,
@@ -102,6 +118,10 @@ class _AddRiderViewState extends State<AddRiderView> {
                         number = value!;
                       },
                       initialText: number,
+                      focusNode: _phoneFocus,
+                      onSubmit: (term) {
+                        _fieldFocusChange(_phoneFocus, _addressFocus);
+                      },
                     ),
                     SizedBox(height: SizeConfig.blockSizeVertical * 2),
                     Text(Constants.localities, style: bodyTextStyle1),
@@ -164,6 +184,10 @@ class _AddRiderViewState extends State<AddRiderView> {
                         address = value!;
                       },
                       initialText: address,
+                      focusNode: _addressFocus,
+                      onSubmit: (term) {
+                        _fieldFocusChange(_addressFocus, _pincodeFocus);
+                      },
                     ),
                     DriverFormField(
                       label: Constants.pincode,
@@ -179,6 +203,10 @@ class _AddRiderViewState extends State<AddRiderView> {
                         pincode = value!;
                       },
                       initialText: pincode,
+                      focusNode: _pincodeFocus,
+                      onSubmit: (term) {
+                        _fieldFocusChange(_pincodeFocus, _bankFocus);
+                      },
                     ),
                     DriverFormField(
                       label: Constants.bankAccNum,
@@ -194,6 +222,10 @@ class _AddRiderViewState extends State<AddRiderView> {
                         bankAccount = value!;
                       },
                       initialText: bankAccount,
+                      focusNode: _bankFocus,
+                      onSubmit: (term) {
+                        _fieldFocusChange(_bankFocus, _ifscFocus);
+                      },
                     ),
                     DriverFormField(
                       label: Constants.ifsc,
@@ -209,6 +241,11 @@ class _AddRiderViewState extends State<AddRiderView> {
                         ifsc = value!;
                       },
                       initialText: ifsc,
+                      focusNode: _ifscFocus,
+                      onSubmit: (term) {
+                        _ifscFocus.unfocus();
+                      },
+                      textInputAction: TextInputAction.done,
                     ),
                     SizedBox(height: SizeConfig.blockSizeVertical * 10)
                   ],
