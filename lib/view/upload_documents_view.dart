@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grow_simplee_intern_assignment/constants/constants.dart';
 import 'package:grow_simplee_intern_assignment/size_config.dart';
 import 'package:grow_simplee_intern_assignment/styles.dart';
+import 'package:grow_simplee_intern_assignment/utils/snackbars.dart';
 import 'package:grow_simplee_intern_assignment/view%20model/add_rider_viewmodel.dart';
 import 'package:grow_simplee_intern_assignment/view%20model/home_viewmodel.dart';
 import 'package:grow_simplee_intern_assignment/widgets/document_tile.dart';
@@ -21,6 +22,10 @@ class _UploadDocumentsViewState extends State<UploadDocumentsView> {
 
   void onSave() {
     final rider = model.saveRider();
+    if (rider == null) {
+      showErrorSnackbar('Upload all documents', context);
+      return;
+    }
     Provider.of<HomeViewModel>(context, listen: false).addRider(rider);
     Navigator.popUntil(context, (route) => route.isFirst);
   }

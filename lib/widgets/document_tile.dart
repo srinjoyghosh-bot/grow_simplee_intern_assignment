@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:grow_simplee_intern_assignment/size_config.dart';
 import 'package:grow_simplee_intern_assignment/styles.dart';
+import 'package:grow_simplee_intern_assignment/utils/snackbars.dart';
 import 'package:grow_simplee_intern_assignment/view%20model/add_rider_viewmodel.dart';
 import 'package:grow_simplee_intern_assignment/view/image_view.dart';
 import 'package:image_picker/image_picker.dart';
@@ -24,14 +25,43 @@ class _DocumentTileState extends State<DocumentTile> {
 
   Future pickImage() async {
     try {
-      final image = await ImagePicker().pickImage(
-          source: pickGalleryImage ? ImageSource.gallery : ImageSource.camera);
+      final imageSource = await showDialog<ImageSource>(
+          context: context,
+          builder: (context) => AlertDialog(
+                title: Text(
+                  "Select the image source",
+                  style: bodyTextStyle1,
+                  textAlign: TextAlign.center,
+                ),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    TextButton(
+                      onPressed: () =>
+                          Navigator.pop(context, ImageSource.camera),
+                      child: Text(
+                        "Camera",
+                        style: buttonTextStyle2,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () =>
+                          Navigator.pop(context, ImageSource.gallery),
+                      child: Text(
+                        "Gallery",
+                        style: buttonTextStyle2,
+                      ),
+                    ),
+                  ],
+                ),
+              ));
+      if (imageSource == null) return;
+      final image = await ImagePicker().pickImage(source: imageSource);
       if (image == null) return;
       final imageTemp = File(image.path);
       widget.model.setImage(widget.title, imageTemp);
     } on PlatformException catch (e) {
-      // print('Failed to pick image: $e');
-      //show snackbar
+      showErrorSnackbar('Failed to pick up image', context);
     }
   }
 

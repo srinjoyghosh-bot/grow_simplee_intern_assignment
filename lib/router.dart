@@ -1,9 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:grow_simplee_intern_assignment/model/rider.dart';
 import 'package:grow_simplee_intern_assignment/view/add_rider_view.dart';
 import 'package:grow_simplee_intern_assignment/view/home_view.dart';
 import 'package:grow_simplee_intern_assignment/view/image_view.dart';
+import 'package:grow_simplee_intern_assignment/view/rider_view.dart';
 import 'package:grow_simplee_intern_assignment/view/upload_documents_view.dart';
 
 class AppRouter {
@@ -20,6 +22,9 @@ class AppRouter {
       case ImageView.id:
         return MaterialPageRoute(
             builder: (_) => ImageView(image: settings.arguments as File));
+      case RiderView.id:
+        return MaterialPageRoute(
+            builder: (_) => RiderView(rider: settings.arguments as Rider));
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(

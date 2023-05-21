@@ -1,7 +1,7 @@
 import 'dart:io';
 
 class Rider {
-  String name, phone, address, pincode, bankAcc, ifsc;
+  String name, phone, address, pincode, bankAcc, ifsc, id;
   List<String> localities;
   File? aadhar, pan, dl, bankChq, photo;
 
@@ -13,9 +13,10 @@ class Rider {
       required this.bankAcc,
       required this.ifsc,
       required this.localities,
-      this.aadhar,
-      this.pan,
-      this.dl,
-      this.bankChq,
-      this.photo});
+      required this.id,
+      required this.aadhar,
+      required this.pan,
+      required this.dl,
+      required this.bankChq,
+      required this.photo});
 }

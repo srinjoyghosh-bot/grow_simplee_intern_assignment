@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:grow_simplee_intern_assignment/constants/constants.dart';
 import 'package:grow_simplee_intern_assignment/model/rider.dart';
 import 'package:grow_simplee_intern_assignment/view%20model/base_viewmodel.dart';
+import 'package:uuid/uuid.dart';
 
 class AddRiderViewModel extends BaseViewModel {
   String? _name, _phone, _address, _pincode, _bank, _ifsc;
@@ -86,7 +87,18 @@ class AddRiderViewModel extends BaseViewModel {
 
   File? getImage(String field) => _imageMap[field];
 
-  Rider saveRider() {
+  Rider? saveRider() {
+    bool allFilled = true;
+    for (var entry in _isEnabled.entries) {
+      if (entry.value == false) {
+        allFilled = false;
+        break;
+      }
+    }
+    if (!allFilled) {
+      return null;
+    }
+    String id = const Uuid().v4();
     Rider rider = Rider(
       name: _name!,
       phone: _phone!,
@@ -108,6 +120,7 @@ class AddRiderViewModel extends BaseViewModel {
       photo: (_isEnabled[Constants.photo] ?? false)
           ? _imageMap[Constants.photo]
           : null,
+      id: id,
     );
     clearAll();
     return rider;
@@ -128,5 +141,6 @@ class AddRiderViewModel extends BaseViewModel {
       Constants.bankCheque: false,
       Constants.photo: false,
     };
+    _localities = [];
   }
 }

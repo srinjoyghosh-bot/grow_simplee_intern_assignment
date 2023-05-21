@@ -7,6 +7,7 @@ import 'package:grow_simplee_intern_assignment/widgets/rectangular_fab.dart';
 import 'package:provider/provider.dart';
 
 import '../styles.dart';
+import '../utils/convert.dart';
 import '../widgets/driver_form_field.dart';
 
 class AddRiderView extends StatefulWidget {
@@ -48,17 +49,9 @@ class _AddRiderViewState extends State<AddRiderView> {
 
     _key.currentState?.save();
     model.setWarningStatus = false;
-    model.onSave(name, number, address, pincode, bankAccount, ifsc, localities);
+    model.onSave(name, number, address, pincode, bankAccount, ifsc, selected);
     // navigate
     Navigator.of(context).pushNamed(UploadDocumentsView.id);
-  }
-
-  String convertListToString(List<String> list) {
-    String res = "";
-    for (String element in list) {
-      res += "$element, ";
-    }
-    return res.substring(0, res.length - 2);
   }
 
   @override

@@ -18,6 +18,14 @@ TextStyle buttonTextStyle = TextStyle(
     bodyTextStyle2 = TextStyle(
       fontSize: SizeConfig.blockSizeVertical * 2.2,
       color: Colors.black.withOpacity(0.65),
+    ),
+    bodyTextStyle3 = TextStyle(
+      fontSize: SizeConfig.blockSizeVertical * 2.2,
+      color: Colors.white,
+    ),
+    bodyTextStyle4 = TextStyle(
+      fontSize: SizeConfig.blockSizeVertical * 2.5,
+      color: Colors.black,
     );
 
 // Color greyText= Colors.black.withOpacity(0.65);
