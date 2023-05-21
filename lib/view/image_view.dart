@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:grow_simplee_intern_assignment/styles.dart';
 
+import '../constants/constants.dart';
+
 class ImageView extends StatefulWidget {
   const ImageView({Key? key, required this.image}) : super(key: key);
   final File image;
@@ -17,7 +19,7 @@ class _ImageViewState extends State<ImageView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Image', style: headerTextStyle1),
+        title: Text(Constants.image, style: headerTextStyle1),
         elevation: 0,
       ),
       body: Image.file(widget.image, fit: BoxFit.fill),

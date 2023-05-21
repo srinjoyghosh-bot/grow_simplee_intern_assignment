@@ -27,9 +27,9 @@ class _RiderViewState extends State<RiderView> {
         .removeRider(widget.rider);
     Navigator.of(context).pop();
     if (isAccepted) {
-      showSuccessSnackbar('Rider Approved !', context);
+      showSuccessSnackbar(Constants.approveRider, context);
     } else {
-      showErrorSnackbar('Rider Rejected', context);
+      showErrorSnackbar(Constants.rejectRider, context);
     }
   }
 
@@ -71,7 +71,7 @@ class _RiderViewState extends State<RiderView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'View Rider',
+          Constants.viewRider,
           style: headerTextStyle1,
         ),
         elevation: 0,
@@ -126,14 +126,15 @@ class _RiderViewState extends State<RiderView> {
               ),
             ),
             // SizedBox(height: SizeConfig.blockSizeVertical * 2),
-            RiderDetailField(field: 'Name', text: rider.name),
-            RiderDetailField(field: 'Phone', text: rider.phone),
-            RiderDetailField(field: 'Address', text: rider.address),
-            RiderDetailField(field: 'Pincode', text: rider.pincode),
-            RiderDetailField(field: 'Bank Account Number', text: rider.bankAcc),
-            RiderDetailField(field: 'IFSC', text: rider.ifsc),
+
+            RiderDetailField(field: Constants.name, text: rider.name),
+            RiderDetailField(field: Constants.phone, text: rider.phone),
+            RiderDetailField(field: Constants.address, text: rider.address),
+            RiderDetailField(field: Constants.pincode, text: rider.pincode),
+            RiderDetailField(field: Constants.bankAccNum, text: rider.bankAcc),
+            RiderDetailField(field: Constants.ifsc, text: rider.ifsc),
             RiderDetailField(
-              field: 'Localities',
+              field: Constants.localities,
               text: convertListToString(rider.localities),
             )
           ],
@@ -145,14 +146,14 @@ class _RiderViewState extends State<RiderView> {
         child: Row(
           children: [
             RectangularFAB(
-              text: 'Reject',
+              text: Constants.reject,
               onPress: () {
                 onPress(false);
               },
             ),
             const Spacer(),
             RectangularFAB(
-              text: 'Approve',
+              text: Constants.approve,
               onPress: () {
                 onPress(true);
               },
@@ -173,7 +174,8 @@ class RiderDetailField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: SizeConfig.blockSizeVertical * 1),
+      padding: EdgeInsets.symmetric(vertical: SizeConfig.blockSizeVertical * 1)
+          .copyWith(left: SizeConfig.blockSizeHorizontal * 17),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

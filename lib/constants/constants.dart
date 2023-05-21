@@ -1,9 +1,43 @@
 class Constants {
   Constants._();
 
-  static const String aadhar = 'Aadhar';
-  static const String pan = 'PAN Card';
-  static const String dl = 'DL';
-  static const String bankCheque = 'Bank Cheque';
-  static const String photo = 'Photo';
+  static const String aadhar = 'Aadhar',
+      pan = 'PAN Card',
+      dl = 'DL',
+      bankCheque = 'Bank Cheque',
+      photo = 'Photo',
+      approveRider = 'Rider Approved !',
+      rejectRider = 'Rider Rejected !',
+      addRider = 'Add New Rider',
+      name = 'Name',
+      nameWarning = 'Please add a name',
+      phone = 'Phone Number',
+      phoneWarning = 'Please add a 9 digit phone number',
+      localities = 'Localities',
+      chooseLocalities = 'Choose Some Localities',
+      address = 'Current Address',
+      addressWarning = 'Please add a valid address',
+      pincode = 'Current Pincode',
+      pincodeWarning = 'Please add a 6 digit pincode',
+      bankAccNum = 'Bank Account Number',
+      bankAccWarning = 'Please add a account number',
+      ifsc = 'IFSC Number',
+      ifscWarning = 'Please add a valid IFSC number',
+      next = 'Next',
+      riders = 'Riders',
+      approve = 'Approve',
+      reject = 'Reject',
+      noRiders = 'No riders left to verify',
+      image = 'Image',
+      viewRider = 'View Rider',
+      uploadDocuments = 'Upload Documents',
+      uploadAllDocuments = 'Upload all documents',
+      back = 'Back',
+      save = 'Save',
+      view = 'View',
+      add = 'Add',
+      selectLocalities = 'Select Localities',
+      cancel = 'Cancel',
+      submit = 'Submit',
+      appTitle = 'Grow Simplee Assignment';
 }

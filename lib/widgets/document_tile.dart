@@ -9,6 +9,8 @@ import 'package:grow_simplee_intern_assignment/view%20model/add_rider_viewmodel.
 import 'package:grow_simplee_intern_assignment/view/image_view.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../constants/constants.dart';
+
 class DocumentTile extends StatefulWidget {
   const DocumentTile({Key? key, required this.title, required this.model})
       : super(key: key);
@@ -103,7 +105,7 @@ class _DocumentTileState extends State<DocumentTile> {
                           : Colors.blue),
                 ),
                 child: Text(
-                  'View',
+                  Constants.view,
                   style: buttonTextStyle2,
                 ),
               ),
@@ -113,7 +115,7 @@ class _DocumentTileState extends State<DocumentTile> {
                   side: const BorderSide(color: Colors.blue),
                 ),
                 child: Text(
-                  'Add',
+                  Constants.add,
                   style: buttonTextStyle2,
                 ),
               ),

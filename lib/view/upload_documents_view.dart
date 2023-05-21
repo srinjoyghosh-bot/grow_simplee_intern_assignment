@@ -23,7 +23,7 @@ class _UploadDocumentsViewState extends State<UploadDocumentsView> {
   void onSave() {
     final rider = model.saveRider();
     if (rider == null) {
-      showErrorSnackbar('Upload all documents', context);
+      showErrorSnackbar(Constants.uploadAllDocuments, context);
       return;
     }
     Provider.of<HomeViewModel>(context, listen: false).addRider(rider);
@@ -36,7 +36,7 @@ class _UploadDocumentsViewState extends State<UploadDocumentsView> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text('Upload Documents', style: headerTextStyle1),
+        title: Text(Constants.uploadDocuments, style: headerTextStyle1),
         elevation: 0,
       ),
       body: Padding(
@@ -58,14 +58,14 @@ class _UploadDocumentsViewState extends State<UploadDocumentsView> {
         child: Row(
           children: [
             RectangularFAB(
-              text: 'Back',
+              text: Constants.back,
               onPress: () {
                 Navigator.of(context).pop();
               },
             ),
             const Spacer(),
             RectangularFAB(
-              text: 'Save',
+              text: Constants.save,
               onPress: onSave,
             ),
           ],

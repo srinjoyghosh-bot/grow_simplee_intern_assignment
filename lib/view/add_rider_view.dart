@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grow_simplee_intern_assignment/constants/constants.dart';
 import 'package:grow_simplee_intern_assignment/size_config.dart';
 import 'package:grow_simplee_intern_assignment/view%20model/add_rider_viewmodel.dart';
 import 'package:grow_simplee_intern_assignment/view/upload_documents_view.dart';
@@ -28,12 +29,6 @@ class _AddRiderViewState extends State<AddRiderView> {
       bankAccount = '',
       ifsc = '';
 
-  List<String> localities = [
-    'Civil Lines',
-    'Saharanpur',
-    'IT Roorkee',
-    'Old Roorkee'
-  ];
   List<String> selected = [];
 
   void submit() async {
@@ -65,7 +60,7 @@ class _AddRiderViewState extends State<AddRiderView> {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            'Add New Rider',
+            Constants.addRider,
             style: headerTextStyle1,
           ),
           elevation: 0,
@@ -80,11 +75,11 @@ class _AddRiderViewState extends State<AddRiderView> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     DriverFormField(
-                      label: 'Name',
+                      label: Constants.name,
                       textType: TextInputType.name,
                       validator: (value) {
                         if (value == null || (value.trim().isEmpty)) {
-                          return 'Please add a name';
+                          return Constants.nameWarning;
                         }
                         return null;
                       },
@@ -94,12 +89,12 @@ class _AddRiderViewState extends State<AddRiderView> {
                       initialText: name,
                     ),
                     DriverFormField(
-                      label: 'Phone Number',
+                      label: Constants.phone,
                       textType: TextInputType.phone,
                       validator: (value) {
                         String? text = value?.replaceAll(' ', '');
                         if (text == null || text.isEmpty || text.length != 9) {
-                          return 'Please add a 9 digit phone number';
+                          return Constants.phoneWarning;
                         }
                         return null;
                       },
@@ -109,7 +104,7 @@ class _AddRiderViewState extends State<AddRiderView> {
                       initialText: number,
                     ),
                     SizedBox(height: SizeConfig.blockSizeVertical * 2),
-                    Text('Localities', style: bodyTextStyle1),
+                    Text(Constants.localities, style: bodyTextStyle1),
                     SizedBox(height: SizeConfig.blockSizeVertical),
                     InkWell(
                       onTap: () async {
@@ -142,7 +137,7 @@ class _AddRiderViewState extends State<AddRiderView> {
                             Expanded(
                               child: Text(
                                 selected.isEmpty
-                                    ? 'Choose Some Localities'
+                                    ? Constants.chooseLocalities
                                     : convertListToString(selected),
                                 style: bodyTextStyle2,
                                 overflow: TextOverflow.ellipsis,
@@ -157,11 +152,11 @@ class _AddRiderViewState extends State<AddRiderView> {
                       ),
                     ),
                     DriverFormField(
-                      label: 'Current Address',
+                      label: Constants.address,
                       textType: TextInputType.streetAddress,
                       validator: (value) {
                         if (value == null || (value.trim().isEmpty)) {
-                          return 'Please add a valid address';
+                          return Constants.addressWarning;
                         }
                         return null;
                       },
@@ -171,12 +166,12 @@ class _AddRiderViewState extends State<AddRiderView> {
                       initialText: address,
                     ),
                     DriverFormField(
-                      label: 'Current Pincode',
+                      label: Constants.pincode,
                       textType: TextInputType.number,
                       validator: (value) {
                         String? text = value?.replaceAll(' ', '');
                         if (text == null || text.isEmpty || text.length != 6) {
-                          return 'Please add a 6 digit pincode';
+                          return Constants.pincodeWarning;
                         }
                         return null;
                       },
@@ -186,12 +181,12 @@ class _AddRiderViewState extends State<AddRiderView> {
                       initialText: pincode,
                     ),
                     DriverFormField(
-                      label: 'Bank Account Number',
+                      label: Constants.bankAccNum,
                       textType: TextInputType.number,
                       validator: (value) {
                         if (value == null ||
                             (value.replaceAll(' ', '').isEmpty)) {
-                          return 'Please add a account number';
+                          return Constants.bankAccWarning;
                         }
                         return null;
                       },
@@ -201,12 +196,12 @@ class _AddRiderViewState extends State<AddRiderView> {
                       initialText: bankAccount,
                     ),
                     DriverFormField(
-                      label: 'IFSC Number',
+                      label: Constants.ifsc,
                       textType: TextInputType.number,
                       validator: (value) {
                         if (value == null ||
                             (value.replaceAll(' ', '').isEmpty)) {
-                          return 'Please add a valid IFSC number';
+                          return Constants.ifscWarning;
                         }
                         return null;
                       },
@@ -223,7 +218,7 @@ class _AddRiderViewState extends State<AddRiderView> {
         floatingActionButton: Visibility(
             visible: MediaQuery.of(context).viewInsets.bottom == 0.0,
             child: RectangularFAB(
-              text: 'Next',
+              text: Constants.next,
               onPress: submit,
             )));
   }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:grow_simplee_intern_assignment/constants/constants.dart';
 
 class MultiSelect extends StatefulWidget {
   final List<String> items;
   final List<String> selected;
+
   const MultiSelect({Key? key, required this.items, required this.selected})
       : super(key: key);
 
@@ -11,8 +13,6 @@ class MultiSelect extends StatefulWidget {
 }
 
 class _MultiSelectState extends State<MultiSelect> {
-  final List<String> _selectedItems = [];
-
   void _itemChange(String itemValue, bool isSelected) {
     setState(() {
       if (isSelected) {
@@ -36,7 +36,7 @@ class _MultiSelectState extends State<MultiSelect> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Select Localities'),
+      title: const Text(Constants.selectLocalities),
       content: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,11 +53,11 @@ class _MultiSelectState extends State<MultiSelect> {
       actions: [
         TextButton(
           onPressed: _cancel,
-          child: const Text('Cancel'),
+          child: const Text(Constants.cancel),
         ),
         ElevatedButton(
           onPressed: _submit,
-          child: const Text('Submit'),
+          child: const Text(Constants.submit),
         ),
       ],
     );

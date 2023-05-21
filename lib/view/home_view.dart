@@ -7,6 +7,7 @@ import 'package:grow_simplee_intern_assignment/widgets/rectangular_fab.dart';
 import 'package:grow_simplee_intern_assignment/widgets/rider_tile.dart';
 import 'package:provider/provider.dart';
 
+import '../constants/constants.dart';
 import '../utils/snackbars.dart';
 
 class HomeView extends StatefulWidget {
@@ -24,7 +25,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Riders',
+          Constants.riders,
           style: TextStyle(
             fontSize: SizeConfig.blockSizeVertical * 2.5,
             // fontWeight: FontWeight.bold,
@@ -46,9 +47,10 @@ class _HomeViewState extends State<HomeView> {
                           onDismissed: (direction) {
                             model.removeRider(model.riders[index]);
                             if (direction == DismissDirection.startToEnd) {
-                              showSuccessSnackbar('Rider Approved !', context);
+                              showSuccessSnackbar(
+                                  Constants.approveRider, context);
                             } else {
-                              showErrorSnackbar('Rider Rejected', context);
+                              showErrorSnackbar(Constants.rejectRider, context);
                             }
                           },
                           background: Container(
@@ -59,7 +61,7 @@ class _HomeViewState extends State<HomeView> {
                                 padding: EdgeInsets.only(
                                     left: SizeConfig.blockSizeHorizontal * 2),
                                 child: Text(
-                                  'Approve',
+                                  Constants.approve,
                                   style: bodyTextStyle3,
                                 ),
                               ),
@@ -73,7 +75,7 @@ class _HomeViewState extends State<HomeView> {
                                 padding: EdgeInsets.only(
                                     right: SizeConfig.blockSizeHorizontal * 2),
                                 child: Text(
-                                  'Reject',
+                                  Constants.reject,
                                   style: bodyTextStyle3,
                                 ),
                               ),
@@ -85,13 +87,13 @@ class _HomeViewState extends State<HomeView> {
                   )
                 : Center(
                     child: Text(
-                      'No riders left to verify',
+                      Constants.noRiders,
                       style: bodyTextStyle1,
                     ),
                   )),
       ),
       floatingActionButton: RectangularFAB(
-        text: 'Add',
+        text: Constants.add,
         onPress: () {
           Navigator.of(context).pushNamed(AddRiderView.id);
         },
