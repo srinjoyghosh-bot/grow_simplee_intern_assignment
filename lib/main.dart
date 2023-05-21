@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grow_simplee_intern_assignment/constants.dart';
 import 'package:grow_simplee_intern_assignment/router.dart';
+import 'package:grow_simplee_intern_assignment/size_config.dart';
+import 'package:grow_simplee_intern_assignment/styles.dart';
 import 'package:grow_simplee_intern_assignment/view%20model/add_rider_viewmodel.dart';
 import 'package:grow_simplee_intern_assignment/view%20model/home_viewmodel.dart';
 import 'package:grow_simplee_intern_assignment/view/home_view.dart';
@@ -16,6 +18,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AddRiderViewModel()),
@@ -27,9 +30,7 @@ class MyApp extends StatelessWidget {
         },
         child: MaterialApp(
           title: Constants.appTitle,
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
+          theme: myTheme,
           initialRoute: HomeView.id,
           onGenerateRoute: AppRouter.generateRoute,
           // home: const HomeView(),

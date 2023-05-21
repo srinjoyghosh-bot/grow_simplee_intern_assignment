@@ -102,7 +102,7 @@ class _DocumentTileState extends State<DocumentTile> {
                   side: BorderSide(
                       color: widget.model.getImage(widget.title) == null
                           ? Colors.grey
-                          : Colors.blue),
+                          : Theme.of(context).primaryColor),
                 ),
                 child: Text(
                   Constants.view,
@@ -112,7 +112,7 @@ class _DocumentTileState extends State<DocumentTile> {
               OutlinedButton(
                 onPressed: pickImage,
                 style: OutlinedButton.styleFrom(
-                  side: const BorderSide(color: Colors.blue),
+                  side: BorderSide(color: Theme.of(context).primaryColor),
                 ),
                 child: Text(
                   Constants.add,

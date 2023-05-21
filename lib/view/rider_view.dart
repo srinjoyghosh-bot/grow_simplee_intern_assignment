@@ -89,7 +89,7 @@ class _RiderViewState extends State<RiderView> {
                 children: [
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                      side: const BorderSide(color: Colors.blue),
+                      side: BorderSide(color: Theme.of(context).primaryColor),
                     ),
                     onPressed: () {
                       buttonCarouselController.previousPage(
@@ -113,7 +113,7 @@ class _RiderViewState extends State<RiderView> {
                   ),
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                      side: const BorderSide(color: Colors.blue),
+                      side: BorderSide(color: Theme.of(context).primaryColor),
                     ),
                     onPressed: () {
                       buttonCarouselController.nextPage(
@@ -183,7 +183,8 @@ class RiderDetailField extends StatelessWidget {
               width: SizeConfig.blockSizeHorizontal * 40,
               child: Text(
                 field,
-                style: bodyTextStyle4.copyWith(color: Colors.blue),
+                style: bodyTextStyle4.copyWith(
+                    color: Theme.of(context).primaryColor),
                 // textAlign: TextAlign.center,
               )),
           Expanded(

@@ -28,4 +28,18 @@ TextStyle buttonTextStyle = TextStyle(
       color: Colors.black,
     );
 
+ThemeData myTheme = ThemeData(
+  primarySwatch: Colors.purple,
+  textTheme: TextTheme(
+    bodySmall: bodyTextStyle1,
+    bodyMedium: bodyTextStyle2,
+    bodyLarge: bodyTextStyle3,
+    displayMedium: bodyTextStyle4,
+    displaySmall: buttonTextStyle2,
+    titleLarge: headerTextStyle1,
+    labelMedium: buttonTextStyle2,
+    labelLarge: buttonTextStyle,
+  ),
+);
+
 // Color greyText= Colors.black.withOpacity(0.65);
